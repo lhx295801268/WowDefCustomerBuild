@@ -110,10 +110,13 @@ startattack（自动攻击当前目标）、stopattack（停止攻击） <br>
 if UnitExists(t) and UnitIsEnemy("player",t) then
     local i=1
     while true do
-        local _,_,_,_,_,_,_,_,_,spellId=UnitDebuff(t,i)
+        local _,_,_,_,_,surplus_time,_,_,_,spellId=UnitDebuff(t,i)
         if not spellId then break end
-        if spellId==172 then -- 172是腐蚀术的法术ID（需根据当前版本确认）
+        if spellId==172 and surplus_time > 4 then -- 172是腐蚀术的法术ID（需根据当前版本确认）
             CastSpellByName("痛苦诅咒",t)
+            break
+        else
+            CastSpellByName("腐蚀术",t)
             break
         end
         i=i+1
