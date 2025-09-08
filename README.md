@@ -105,6 +105,21 @@ startattack（自动攻击当前目标）、stopattack（停止攻击） <br>
 // 对悬停目标进行复生并且发送密语 <br>
 /run local u="mouseover";if UnitExists(u) and UnitIsFriend("player",u) and not UnitIsDeadOrGhost(u) then CastSpellByName("复生",u);SendChatMessage("喂了 "..UnitName(u).." 一坨大便，如不能药到病除则开除贱籍","WHISPER",nil,UnitName(u))end
 
+// 判断目标是否有腐蚀术如果有则释放痛苦诅咒
+/run local t="target"
+if UnitExists(t) and UnitIsEnemy("player",t) then
+    local i=1
+    while true do
+        local _,_,_,_,_,_,_,_,_,spellId=UnitDebuff(t,i)
+        if not spellId then break end
+        if spellId==172 then -- 172是腐蚀术的法术ID（需根据当前版本确认）
+            CastSpellByName("痛苦诅咒",t)
+            break
+        end
+        i=i+1
+    end
+end
+
 ## DRUID ##
 ### 趴熊并且释放生存本能
 /cast 熊形态; /cast 树皮术; /cast 生存本能 <br>
