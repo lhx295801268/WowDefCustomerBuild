@@ -2,7 +2,7 @@
  * @Author: lhx 769681799@qq.com
  * @Date: 2025-09-08 13:30:36
  * @LastEditors: lhx 769681799@qq.com
- * @LastEditTime: 2025-09-08 13:47:41
+ * @LastEditTime: 2025-09-08 14:17:39
  * @FilePath: /CaeriLib/WowDEF.md
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
@@ -101,6 +101,9 @@ startattack（自动攻击当前目标）、stopattack（停止攻击） <br>
 
 // 焦点嘲讽 没有焦点时，对目标的目标进行嘲讽,否则直接嘲讽 <br>
 /cast [@focus,harm,exists] 嘲讽; [@targettarget,harm,exists] 嘲讽; 嘲讽 <br>
+
+// 对悬停目标进行复生并且发送密语 <br>
+/run local u="mouseover";if UnitExists(u) and UnitIsFriend("player",u) and not UnitIsDeadOrGhost(u) then CastSpellByName("复生",u);SendChatMessage("喂了 "..UnitName(u).." 一坨大便，如不能药到病除则开除贱籍","WHISPER",nil,UnitName(u))end
 
 ## DRUID ##
 ### 趴熊并且释放生存本能
