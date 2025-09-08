@@ -105,7 +105,8 @@ startattack（自动攻击当前目标）、stopattack（停止攻击） <br>
 // 对悬停目标进行复生并且发送密语 <br>
 /run local u="mouseover";if UnitExists(u) and UnitIsFriend("player",u) and not UnitIsDeadOrGhost(u) then CastSpellByName("复生",u);SendChatMessage("喂了 "..UnitName(u).." 一坨大便，如不能药到病除则开除贱籍","WHISPER",nil,UnitName(u))end
 
-// 判断目标是否有腐蚀术如果有则释放痛苦诅咒
+// 判断目标是否有腐蚀术如果有则释放痛苦诅咒<br>
+```lua
 /run local t="target" <br>
 if UnitExists(t) and UnitIsEnemy("player",t) then <br>
     local i=1 <br>
@@ -122,11 +123,15 @@ if UnitExists(t) and UnitIsEnemy("player",t) then <br>
         i=i+1 <br>
     end <br>
 end <br>
-
+```
 ## DRUID ##
 ### 趴熊并且释放生存本能
-/cast 熊形态; /cast 树皮术; /cast 生存本能 <br>
+```lua
+/cast 熊形态; /cast 树皮术; /cast 生存本能 
+```
 
 ### 猎豹并且潜行(为进行战斗,否则疾跑)
-/cast 猎豹形态 [nocombat] 潜行 [combat] 疾跑 <br>
+```lua
+/cast 猎豹形态 [nocombat] 潜行 [combat] 疾跑
+```
 
